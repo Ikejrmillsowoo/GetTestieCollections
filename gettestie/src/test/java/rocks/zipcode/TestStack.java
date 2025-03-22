@@ -56,14 +56,14 @@ public class TestStack {
 
         newPerson.add(person);
         newPerson.add(person2);
-        Assert.assertEquals(2,newPerson.size());
+        Assert.assertEquals(2, newPerson.size());
         newPerson.remove(person2);
-        Assert.assertEquals(1,newPerson.size());
+        Assert.assertEquals(1, newPerson.size());
         Assert.assertEquals("Sticky", newPerson.get(0).getName());
     }
 
     @Test
-    public void TestHashMaps(){
+    public void TestHashMaps() {
         HashMap<Person, String> hashMap = new HashMap<>();
         Person person = new Person("Sticky", 1999);
         Person person2 = new Person("Wallo", 2019);
@@ -72,15 +72,15 @@ public class TestStack {
         hashMap.put(person2, "2");
         hashMap.put(person3, "3");
 
-        assertEquals(3,hashMap.size());
-        assertEquals("2",hashMap.get(person2));
-        assertEquals("3",hashMap.get(person3));
+        assertEquals(3, hashMap.size());
+        assertEquals("2", hashMap.get(person2));
+        assertEquals("3", hashMap.get(person3));
         assertTrue(hashMap.containsKey(person3));
 
     }
 
     @Test
-    public void TestLinkedList(){
+    public void TestLinkedList() {
         Address address = new Address("217 belly", "bear", "19702", "USA");
         Address address2 = new Address("2127 belly", "bear", "19702", "USA");
         Person person = new Person("Chuck", 1994);
@@ -92,19 +92,40 @@ public class TestStack {
         linkedList.add(person);
 
         linkedList.push(person2);
-        Assert.assertEquals(3,linkedList.size());
-        Assert.assertEquals(person2,linkedList.getFirst());
+        Assert.assertEquals(3, linkedList.size());
+        Assert.assertEquals(person2, linkedList.getFirst());
         linkedList.addFirst(person);
-        Assert.assertEquals(person,linkedList.getFirst());
+        Assert.assertEquals(person, linkedList.getFirst());
 
         linkedAddress.push(address);
         linkedAddress.add(address);
         linkedList.get(0).getAddress();
-        Assert.assertEquals(address2,linkedAddress.getFirst());
-
-
+        Assert.assertEquals(address2, linkedAddress.getFirst());
     }
 
+    @Test
+    public void TestArrayDeque() {
+        Address address = new Address("217 belly", "bear", "19702", "USA");
+        Address address2 = new Address("2127 belly", "bear", "19702", "USA");
+        Person person = new Person("Chuck", 1994);
+        Person person2 = new Person("Mike", 2004);
 
+        ArrayDeque<Person> personArrayDeque = new ArrayDeque<>();
+        ArrayDeque<Address> addressArrayDeque = new ArrayDeque<>();
+
+        personArrayDeque.add(person);
+        Assert.assertEquals(person, personArrayDeque.getFirst());
+
+        personArrayDeque.addFirst(person2);
+        Assert.assertEquals(person2, personArrayDeque.element());
+        Assert.assertEquals(2, personArrayDeque.size());
+        Assert.assertEquals(person2, personArrayDeque.peek());
+        addressArrayDeque.isEmpty();
+        addressArrayDeque.add(address2);
+        addressArrayDeque.addFirst(address);
+        Assert.assertEquals(address, addressArrayDeque.getFirst());
+        Assert.assertFalse(addressArrayDeque.isEmpty());
+
+    }
 
 }
