@@ -98,9 +98,8 @@ public class TestStack {
         Assert.assertEquals(person, linkedList.getFirst());
 
         linkedAddress.push(address);
-        linkedAddress.add(address);
-        linkedList.get(0).getAddress();
-        Assert.assertEquals(address2, linkedAddress.getFirst());
+        linkedAddress.add(address2);
+        Assert.assertEquals(linkedAddress.get(0), linkedAddress.getFirst());
     }
 
     @Test
