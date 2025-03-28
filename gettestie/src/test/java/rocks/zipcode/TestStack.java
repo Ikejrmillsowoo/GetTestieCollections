@@ -119,11 +119,105 @@ public class TestStack {
         Assert.assertEquals(person2, personArrayDeque.element());
         Assert.assertEquals(2, personArrayDeque.size());
         Assert.assertEquals(person2, personArrayDeque.peek());
-        addressArrayDeque.isEmpty();
         addressArrayDeque.add(address2);
         addressArrayDeque.addFirst(address);
         Assert.assertEquals(address, addressArrayDeque.getFirst());
         Assert.assertFalse(addressArrayDeque.isEmpty());
+        Assert.assertEquals(address,addressArrayDeque.peek());
+        Assert.assertEquals(person2,personArrayDeque.peek());
+
+    }
+
+    @Test
+    public void TestVector(){
+        Address address = new Address("217 belly", "bear", "19702", "USA");
+        Address address2 = new Address("2127 belly", "bear", "19702", "USA");
+        Person person = new Person("Chuck", 1994);
+        Person person2 = new Person("Mike", 2004);
+
+        Vector<Person> personVector = new Vector<>();
+        Vector<Address> addressVector = new Vector<>();
+
+        addressVector.add(address2);
+        addressVector.add(address);
+        personVector.add(person);
+        personVector.add(person2);
+
+        Assert.assertEquals(address2, addressVector.get(0));
+        Assert.assertFalse(addressVector.isEmpty());
+        addressVector.remove(address2);
+        addressVector.remove(address);
+        Assert.assertTrue(addressVector.isEmpty());
+        Assert.assertEquals(person2,personVector.get(1));
+    }
+
+    @Test
+    public void TestTreeMap(){
+        Address address = new Address("217 belly", "bear", "19702", "USA");
+        Person person = new Person("Chuck", 1994);
+
+        TreeMap<Address, Person> addressTreeMap = new TreeMap<>();
+
+        addressTreeMap.put(address, person);
+        Person expectedStreet = addressTreeMap.get(address);
+
+        Assert.assertEquals("Chuck", expectedStreet.getName());
+
+    }
+
+    @Test
+    public void TestStack(){
+        Address address = new Address("217 belly", "bear", "19702", "USA");
+        Address address2 = new Address("2127 belly", "bear", "19702", "USA");
+        Person person = new Person("Chuck", 1994);
+
+        Stack<Address> addressStack = new Stack<>();
+
+        addressStack.push(address);
+        addressStack.push(address2);
+
+        Assert.assertEquals(address2, addressStack.peek());
+        addressStack.pop();
+        Assert.assertNotEquals(address2, addressStack.peek());
+    }
+
+    @Test
+    public void TestTreeSet(){
+        Person person = new Person("Chuck", 1994);
+        Person person2 = new Person("Eddie", 2004);
+
+        TreeSet<Person> addressTreeSet = new TreeSet<>();
+
+        addressTreeSet.add(person);
+        addressTreeSet.add(person2);
+
+        Assert.assertEquals(person, addressTreeSet.first());
+
+    }
+
+    @Test
+    public void TestIterator(){
+        Person person = new Person("Chuck", 1994);
+        Person person2 = new Person("Eddie", 2004);
+        Person person3 = new Person("Jonah", 2014);
+
+        TreeSet<Person> addressTreeSet = new TreeSet<>();
+
+        addressTreeSet.add(person);
+        addressTreeSet.add(person2);
+
+        Iterator<Person> iterator = addressTreeSet.iterator();
+
+        Assert.assertTrue(iterator.hasNext());
+
+        iterator.next();
+
+        Assert.assertTrue(iterator.hasNext());
+
+        iterator.next();
+
+        Assert.assertFalse(iterator.hasNext());
+
 
     }
 

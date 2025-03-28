@@ -1,7 +1,9 @@
 package rocks.zipcode;
 
 
-public class Person {
+import java.util.Iterator;
+
+public class Person implements Comparable<Person>, Iterable<Person>{
     private String name;
     private int yearOfBirth;
     private Address address;
@@ -63,4 +65,19 @@ public class Person {
     {
         return "Name: " + name + "\n" + "Year of birth: " + yearOfBirth + "\n";
     }
+
+
+
+    @Override
+    public int compareTo(Person o) {
+        return o.getYearOfBirth();
+    }
+
+    @Override
+    public Iterator<Person> iterator() {
+
+        return null;
+    }
+
+
 }

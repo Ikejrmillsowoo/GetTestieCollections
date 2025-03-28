@@ -1,6 +1,6 @@
 package rocks.zipcode;
 
-public class Address {
+public class Address implements Comparable<Address> {
     private String street;
     private String town;
     private String postCode;
@@ -29,4 +29,19 @@ public class Address {
     public String toString() {
         return street + "\n" + town + " " + postCode + "\n" + country + "\n";
     }
+
+    @Override
+    public int compareTo(Address o) {
+        int result = this.street.compareTo(o.street);
+        if (result != 0) return result;
+
+        result = this.town.compareTo(o.town);
+        if (result != 0) return result;
+
+        result = this.postCode.compareTo(o.postCode);
+        if (result != 0) return result;
+
+        return this.country.compareTo(o.country);
+    }
+
 }
